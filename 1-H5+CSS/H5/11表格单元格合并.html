@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>合并单元格6和7:colspan</p>
+    <p>合并单元格9和13: rowspan</p>
+
+    <table border="1" width="500px" height="50px">
+        <tr>
+            <td>单元格1</td>
+            <td>单元格2</td>
+            <td>单元格3</td>
+            <td>单元格4</td>
+        </tr>
+
+        <tr>
+            <td>单元格5</td>
+            <td colspan="2">单元格6</td>
+            <!--删除单元格7-->>
+            <td>单元格8</td>
+        </tr>
+
+        <tr>
+            <td rowspan="2">单元格9</td>
+            <td>单元格10</td>
+            <td>单元格11</td>
+            <td>单元格12</td>
+        </tr>
+
+        <tr>
+            <!--删除单元格13-->>
+            <td>单元格14</td>
+            <td>单元格15</td>
+            <td>单元格16</td>
+        </tr>
+    </table>
+
+</body>
+</html>

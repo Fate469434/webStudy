@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 定时器还有另外一种settimeout -->
+
+    <!-- setInterval(函数，间隔时间) -->
+
+    <script>
+/*
+        写法一：
+        setInterval(function(){
+            console.log('hello');
+        },1000)
+ */
+
+        // 写法二
+        function show(){
+            console.log('月薪过万');
+        }
+
+        let timer=setInterval(show,1000)
+        // setInterval返回值是一个数字，表示定时器的id
+
+        // 清除定时器
+        clearInterval(timer)
+        
+    </script>
+</body>
+</html>

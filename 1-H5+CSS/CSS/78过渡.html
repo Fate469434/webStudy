@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* 这样写太麻烦 */
+            /* transition: width 1s, background-color 1s; */
+            /* 这样写简单 */
+            transition: all 1s;
+        }
+
+        /* 1. 鼠标悬浮时过度，不用js而纯粹使用css */
+        /* .box:hover{
+            width: 600px;
+            background-color: skyblue;
+        } */
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <!-- 用法看图 -->
+    <img src="./过渡效果.png" alt="">
+    <script>
+        let div=document.querySelector('div')
+
+        // 2. 鼠标移入移出时过过渡
+        div.addEventListener('mouseenter',function(){
+            div.style.width='300px'
+            div.style.height='300px'
+        })
+        div.addEventListener('mouseleave',function(){
+            div.style.width='200px'
+            div.style.height='200px'
+        })
+
+        // 3. 按钮点击时过渡
+        div.addEventListener('click',function(){
+            div.style.backgroundColor='skyblue'
+        })
+
+        // 总结:过渡的触发条件是设置了过渡属性的css类的属性发生变化时
+    </script>
+</body>
+</html>

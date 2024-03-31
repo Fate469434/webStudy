@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button></button>
+    <script>
+        // 环境对象this，他就是个对象
+        function fn(){
+            console.log(this)//this指向window
+        }
+        //这其实才是函数调用的完整写法，不过一般省略了window直接写fn()
+        window.fn()
+
+        let btn=document.querySelector('button')
+        btn.addEventListener('click',function(){
+            // 此时this指向btn
+            console.log(this);
+        })
+
+        // ---------------总结---------------
+        // 谁调用函数，函数里的this指向谁
+    </script>
+</body>
+</html>

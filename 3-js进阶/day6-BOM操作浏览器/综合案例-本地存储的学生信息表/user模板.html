@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/user.css">
+</head>
+
+<body>
+  <h1>新增学员</h1>
+  <div class="info">
+    姓名：<input type="text" class="uname">
+    年龄：<input type="text" class="age">
+    性别: <select name="gender" id="" class="gender">
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+    <!-- 学号：<input type="text" class="stuId"> -->
+    薪资：<input type="text" class="salary">
+    就业城市：<select name="city" id="" class="city">
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+      <option value="曹县">曹县</option>
+
+    </select>
+    <button class="add">录入</button>
+  </div>
+
+  <h1>就业榜</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>就业城市</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1001</td>
+        <td>欧阳霸天</td>
+        <td>19</td>
+        <td>男</td>
+
+        <td>15000</td>
+        <td>上海</td>
+        <td>
+          <a href="javascript:" id="default">删除</a>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+  <script>
+    // 读取本地读取的数据
+    function getLocalData() {
+      let data = localStorage.getItem('data')
+      if (data) {
+        return JSON.parse(data)
+      }
+      else {//最开始没有数据就添加
+        let arr = [
+          { stuId: 1001, uname: '欧阳霸天', age: 19, gender: '男', salary: '20000', city: '上海' },
+          { stuId: 1002, uname: '令狐霸天', age: 29, gender: '男', salary: '30000', city: '北京' },
+          { stuId: 1003, uname: '诸葛霸天', age: 39, gender: '男', salary: '2000', city: '北京' },
+        ]
+        localStorage.setItem('data',JSON.stringify(arr))
+      }
+    }
+
+
+    // 获取父元素
+    let tbody = document.querySelector('tbody')
+
+    // 渲染函数
+    function render() {
+      // 先获取数据
+      let arr=getLocalData()
+
+      tbody.innerHTML=''
+      // 根据数据条数来渲染增加/删除tr
+      for (let i = 0; i < arr.length; i++) {
+        let tr = document.createElement('tr')
+        tr.innerHTML =
+          `
+        <td>${arr[i].stuId}</td>
+        <td>${arr[i].uname}</td>
+        <td>${arr[i].age}</td>
+        <td>${arr[i].gender}</td>
+
+        <td>${arr[i].salary}</td>
+        <td>${arr[i].city}</td>
+        <td>
+          <a href="javascript:" data-id="${i}">删除</a>
+        </td>
+      `
+      tbody.appendChild(tr)
+      //-----------------------------------注意！！！！！！！！------------------------
+      //-----------------------------------注意！！！！！！！！------------------------
+
+      // ----注意104行的data-id=${i},这里用到了自定义属性，这是为删除做准备的，这样每个a的data-id就是其所在行的下标，相当精妙
+
+      //-----------------------------------注意！！！！！！！！------------------------
+      //-----------------------------------注意！！！！！！！！------------------------
+      }
+    }
+    
+    // 每次打开页面都要根据数据渲染表格
+    render()
+
+    // 录入学员
+    let btn = document.querySelector('.add')
+    btn.addEventListener('click', function () {
+      // 取数据
+      let arr=getLocalData()
+      arr.push(
+        {
+          stuId:  arr[arr.length-1].stuId+1,
+          uname:  document.querySelector('.uname').value,
+          age:    document.querySelector('.age').value,
+          gender: document.querySelector('.gender').value,
+          salary: document.querySelector('.salary').value,
+          city:   document.querySelector('.city').value
+        }
+      )
+      // 存数据
+      localStorage.setItem('data',JSON.stringify(arr))
+      // 录入一次就渲染一下
+      render()
+    })
+
+    // 删除学员
+    // 注意，这里并没有为每一个删除按钮一个个添加事件，而是用了事件委托
+    tbody.addEventListener('click',function(e){
+      // console.log(e.target);
+      // 查看e.target有哪些属性
+      console.dir(e.target);
+      if(e.target.text==='删除'){
+        // 先取数据到数组
+        let arr=getLocalData()
+        // 然后删除数组里面的数据
+        arr.splice(e.target.dataset.id,1)
+        // 然后将数组存回本地
+        localStorage.setItem('data',JSON.stringify(arr))
+        // 最后渲染
+        render()
+      }
+    })
+  </script>
+</body>
+
+</html>

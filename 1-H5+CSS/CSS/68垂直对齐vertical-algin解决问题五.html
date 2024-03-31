@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .father {
+      width: 600px;
+      height: 600px;
+      background-color: pink;
+/*       
+      当父级设置了行高与自身高度相同，子级行内元素或行内块元素设置了vertical-align: middle，
+      就可以实现子元素在父元素里的垂直居中效果。
+      可以这样去理解：浏览器把行内元素和行内块当文字处理，vertical-align: middle可以改变文字垂直
+      居中对齐的方式。vertical-align默认按基线对齐，middle按一行的中间对齐。 
+*/
+      line-height: 600px;
+      text-align: center;
+    }
+    img {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="father">
+    <img src="./美女.jpg" alt="">
+  </div>
+</body>
+</html>

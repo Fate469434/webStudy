@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+</head>
+
+<body>
+    <h1>尚硅谷</h1>
+    <button>点击获取用户数据</button>
+    <script>
+
+        
+        // 需要注意的是，本页需要手动在浏览器中输入127.0.0.1:9000/home来拉取才满足同源策略
+        // 因为直接用alt+L+O的方式得到本页面的端口为5500，此时会发生跨域
+
+        const btn = document.querySelector('button');
+        btn.onclick = function () {
+            const x = new XMLHttpRequest();
+            //这里因为是满足同源策略的, 所以 url 可以简写
+            // 因为这个页面来自于172.0.0.1/9000,所以系统会自动补齐127.0.0.1:9000，因此Ajax请求满足同源策略
+            x.open("GET", '/data')
+            //发送
+            x.send();
+            //
+            x.onreadystatechange = function () {
+                if (x.readyState === 4) {
+                    if (x.status >= 200 && x.status < 300) {
+                        console.log(x.response);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        function Star(uname,age){
+            this.uname=uname
+            this.age=age
+            // this.sing=function(){
+            // }
+        }
+        Star.prototype.sing=function(){
+            console.log('唱山歌');
+        }
+        
+        // 原型的主要作用：共享方法
+        let ldh=new Star('刘德华',18)
+        let zxy=new Star('张学友',19)
+        ldh.sing()
+        zxy.sing()
+        console.log(ldh);
+        // 原型对象相当于所有实例公用的一个对象，有点类似于静态变量
+        alert(ldh.sing===zxy.sing)
+    </script>
+</body>
+</html>

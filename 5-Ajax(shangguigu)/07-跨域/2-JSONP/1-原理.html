@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原理演示</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 100px;
+            border: solid 1px #78a;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!-- 原理：像script这样的标签，本身就支持跨域，毕竟我们可以引用远程的js文件，例如前面引用远程的axios -->
+    <!-- 概念:浏览器端通过<script>标签的src属性，请求服务器上的数据，同时，
+        服务器返回一个函数的调用。这种请求数据的方式叫做JSONP。 -->
+
+    <div id="result"></div>
+    <script>
+        //处理数据
+        function handle(data) {
+            //获取 result 元素
+            const result = document.getElementById('result');
+            result.innerHTML = data.name;
+        }
+    </script>
+    <!-- <script src="http://127.0.0.1:5500/%E8%AF%BE%E5%A0%82/%E4%BB%A3%E7%A0%81/7-%E8%B7%A8%E5%9F%9F/2-JSONP/js/app.js"></script> -->
+    <script src="http://127.0.0.1:8000/jsonp-server"></script>
+</body>
+
+</html>

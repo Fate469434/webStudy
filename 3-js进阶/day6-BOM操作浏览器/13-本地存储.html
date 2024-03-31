@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  
+    本地存储是把数据存储在浏览器中   
+    1、生命周期永久生效，除非手动删除否则关闭页面也会存在
+    2、可以多窗口（页面）共享（同一浏览器可以共享)
+    3、以键值对的形式存储使用 
+-->
+    <script>
+
+        // 1. 存储简单数据
+        localStorage.setItem('uname','庾辉')
+
+        // 获取数据
+        alert(localStorage.getItem('uname'));
+
+        // 删除数据
+        // localStorage.removeItem('uname')
+
+        
+        // 2. 存储复杂数据类型
+        let obj={
+            uname:'庾辉',
+            age:17,
+            address:'江苏'
+        }
+        // 将对象转换为JSON字符串
+        // alert(JSON.stringify(obj))
+
+        // 本地存储只能存字符串，所以要将复杂数据类型转换为JSON字符串再存储
+        localStorage.setItem('obj',JSON.stringify(obj))
+
+        // 读取
+        // alert(localStorage.getItem('obj'))
+        console.log(JSON.parse(localStorage.getItem('obj')))
+        
+        // 总结
+        // JSON.stringify(复杂数据类型)，将复杂数据类型转为JSON
+        // JSON.parse(JSON字符串)，将JSON转为复杂数据类型
+    </script>
+</body>
+
+</html>

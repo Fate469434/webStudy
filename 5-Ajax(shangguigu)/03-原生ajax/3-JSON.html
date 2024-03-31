@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        // 获取元素对象
+        const result=document.querySelector('#result')
+        window.addEventListener('keydown',function(){
+            // 1.创建对象
+            const xhr=new XMLHttpRequest()
+
+            // 设置响应体数据类型,自动转换数据格式
+            xhr.responseType='json'
+
+            // 2.初始化 设置请求类型和url
+            xhr.open('POST','http://127.0.0.1:8000/json-server')
+            // 3.发送
+            xhr.send('a=100&b=200&c=300&obj={name:1}')//post的参数在send里面设置
+            // 4.事件绑定
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    if(xhr.status>=200&&xhr.status<300){
+                        // 处理服务端返回的结果
+
+                        // 手动将JSON转换为对象
+                        // let data=JSON.parse(xhr.response)
+
+                        // 自动转换，需要设置xhr.responseType="json"
+                        result.innerHTML=xhr.response.name
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+        <button @click="changeWeather">切换天气</button>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            isHot: true
+        },
+        computed: {
+            info() {
+                return this.isHot ? '炎热' : '凉爽'
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot
+            }
+        },
+        watch: {
+            // 监视的写法1——完整写法
+            /*          isHot: {
+                            // immediate: true,//初始化时让handler调用一下
+                            // deep:true,      //开启深度监视
+                            handler(newValue, oldValue) {
+                                console.log('ishot被修改了,新的值是' + newValue + ',旧的值是' + oldValue);
+                            }
+                        } */
+
+            // 简写(当不需要immediate和deep这样的配置项时)
+            isHot: function (newValue, oldValue) {
+                console.log('ishot被修改了,新的值是' + newValue + ',旧的值是' + oldValue);
+            }
+        },
+    })
+    // 监视的写法2-完整写法
+    /* vm.$watch('isHot', {
+        immediate: true, //初始化时让handler调用一下
+        deep:true,       //开启深度监视
+        handler(newValue, oldValue) {
+            console.log('ishot被修改了,新的值是' + newValue + ',旧的值是' + oldValue);
+        }
+    }) */
+
+    // 简写(当不需要immediate和deep这样的配置项时)
+    vm.$watch('isHot',function(newValue,oldValue){
+        console.log('ishot被修改了,新的值是' + newValue + ',旧的值是' + oldValue);
+    })
+</script>
+
+</html>

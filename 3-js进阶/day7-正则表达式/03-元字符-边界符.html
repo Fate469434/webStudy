@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // console.log(/哈/.test('哈哈'))
+        // console.log(/哈/.test('二哈'))
+
+        // ^ 开头 $结尾
+        // ^ $同时存在是精确匹配，要一模一样的字串才为真
+        console.log(/^哈/.test('二哈'))  // false 
+        console.log(/^哈/.test('我开心的哈哈大笑'))  // false 
+        console.log(/^哈$/.test('我开心的哈哈大笑'))  // false 
+        console.log(/^哈$/.test('哈哈'))  // false 
+        console.log(/^哈$/.test('哈'))  // true  精确匹配
+
+        // ^在中括号内表示取反
+    </script>
+</body>
+
+</html>

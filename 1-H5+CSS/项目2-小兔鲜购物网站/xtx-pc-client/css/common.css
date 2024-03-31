@@ -1,0 +1,218 @@
+/* 各个页面相同的样式表 */
+/* 版心 */
+.wrapper{
+    width: 1240px;
+    margin: 0 auto;
+}
+
+/* 快捷菜单 */
+.shortcut{
+    height: 52px;
+    background-color: #333;
+}
+
+.shortcut .wrapper{
+    height: 52px;
+    /* background-color: pink; */
+}
+
+.shortcut .wrapper li{
+    float: right;
+    line-height: 52px;
+}
+
+.shortcut .wrapper a{
+    padding: 0 16px;
+    border-right: 1px solid #666;
+    font-size: 14px;
+    color: #dcdcdc;
+}
+
+.shortcut .wrapper a span{
+    display: inline-block;
+    width: 11px;
+    height: 16px;
+    margin-right: 8px;
+    background-image: url("../images/sprites.png");
+    background-position: -160px -70px;
+    vertical-align: middle;
+}
+
+/* 头部导航栏 */
+.header{
+    margin: 30px auto;
+    height: 70px;
+    /* background-color: pink; */
+}
+
+.logo{
+    float: left;
+    width: 207px;
+    height: 70px;
+}
+/* logo搜索引擎优化做法 */
+.logo h1{
+    width: 207px;
+    height: 70px;
+}
+.logo h1 a{
+    display: block;
+    width: 207px;
+    height: 70px;
+    background-image: url("../images/logo.png");
+    background-size: contain;
+    /* 让h1里面的字看不见 */
+    font-size: 0;
+}
+/* 导航 */
+.nav{
+    float: left;
+    height: 70px;
+    margin-left: 40px;
+    /* background-color: skyblue; */
+}
+
+.nav li{
+    float: right;
+    margin-right: 48px;
+    line-height: 70px;
+}
+
+.nav li a{
+    padding-bottom: 7px;
+}
+
+.nav li a:hover{
+    color: #27ba9b;
+    border-bottom: 1px solid #27ba9b;
+}
+/* 搜索框 */
+.search{
+    position: relative;
+    float: right;
+    width: 172px;
+    height: 30px;
+    margin-top: 20px;
+    /* background-color: skyblue; */
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.search input{
+    width: 172px;
+    height: 28px;
+    padding-left: 30px;
+
+}
+
+.search input::placeholder{
+    font-size: 14px;
+    color: #ccc;
+}
+/* 放大镜图标 */
+.search span{
+    position: absolute;
+    left: 2px;
+    top: 5px;
+    /* 有了absolute就具备了行内块特点，不需要diplay block */
+    /* display: block; */
+    width: 18px;
+    height: 18px;
+    background-image: url("../images/sprites.png");
+    background-position: -79px -69px;
+}
+/* 购物车图标 */
+.car{
+    position: relative;
+    float: right;
+    margin-left: 15px;
+    margin-top: 25px;
+    width: 23px;
+    height: 23px;
+    background-image: url("../images/sprites.png");
+    background-position: -119px -69px;
+}
+.car span{
+    position: absolute;
+    /* 有了absolute就具备了行内块特点，不需要diplay block */
+    top: -6px;
+    right: -13px;
+    width: 20px;
+    height: 15px;
+    border-radius: 7.5px;
+    background-color: #e26237;
+    font-size: 8px;
+    color: #fff;
+    text-align: center;
+    line-height: 15px;
+}
+
+/* 版权区域 */
+.footer{
+    height: 342px;
+    background-color: #333;
+}
+
+.footer .wrapper{
+    width: 1393px;
+}
+
+.footer .top{
+    height: 175px;
+    border-bottom: 3px solid #434343;
+}
+
+.footer .top li{
+    float: left;
+    margin-top: 58px;
+    margin-right: 300px;
+    width: 195px;
+    height: 58px;
+    line-height: 58px;
+
+}
+
+.footer .top li:nth-child(3){
+    margin-right: 0;
+}
+
+.footer .top li span{
+    float: left;
+    display: inline-block;
+    margin-left: 19px;
+    height: 58px;
+    font-size: 28px;
+    color: #fff;
+}
+
+.footer .top li::before{
+    float: left;
+    display: inline-block;
+    content: '';
+    width: 58px;
+    height: 58px;
+    background-image: url("../images/sprites.png");
+}
+
+.footer .top li:nth-child(0)::before{
+    background-position: 0 0;
+}
+.footer .top li:nth-child(2)::before{
+    background-position: -64px 0;
+}
+.footer .top li:nth-child(3)::before{
+    background-position: -129px 0;
+}
+
+.bottom{
+    padding-top: 40px;
+}
+
+.footer .bottom p{
+    margin-bottom: 20px;
+    text-align: center;
+    color: #999;
+}
+.footer .bottom a{
+    font-size: 14px;
+    color: #999;
+}

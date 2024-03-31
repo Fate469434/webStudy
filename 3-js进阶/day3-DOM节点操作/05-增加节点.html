@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .current{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .two{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 1.创建元素
+        let div=document.createElement('div')
+        div.classList.add('current')
+        div.innerHTML='我是div'
+        
+        // 2.将元素追加到父级里
+        // 父元素.appendchild(创建的元素)
+        let body=document.querySelector('body')
+        body.appendChild(div)
+
+        // 3. 追加节点  父元素.insertBefore(子元素， 放到那个元素的前面)   
+        let two=document.createElement('div')
+        two.classList.add('two')
+        body.insertBefore(two,div)
+    </script>
+</body>
+</html>

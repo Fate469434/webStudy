@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 编写组件标签 -->
+        <school></school>
+        <hr>
+        <student></student>
+        <student></student>
+        <hr>
+        <helloword></helloword>
+    </div>
+
+    <!-- 组件使用分为三步： -->
+    <!-- 1.创建组件 -->
+    <!-- 2.注册组件 -->
+    <!-- 3.编写组件标签 -->
+
+    <script>
+
+
+        //创建school组件
+        const school = Vue.extend({
+            template: `
+              <div>
+                <h2>学校名称：{{schoolName}}</h2><br>
+                <h2>学校地址：{{address}}</h2><br>
+              </div>
+            `,
+            data: function () {
+                return {
+                    schoolName: '尚硅谷',
+                    address: '北京昌平',
+                }
+            }
+        })
+
+        // 创建student组件
+        const student = Vue.extend({
+            template: `
+              <div>
+                <h2>学生名称：{{studentName}}</h2><br>
+                <h2>学生年龄：{{age}}</h2><br>
+              </div>
+            `,
+            data: function () {
+                return {
+                    studentName: '张三',
+                    age: 18
+                }
+            }
+        })
+        // 创建hello组件
+        const hello = Vue.extend({
+            template: `
+				<div>	
+					<h2>helloword！{{name}}</h2>
+				</div>
+			`,
+            data() {
+                return {
+                    name: 'Tom'
+                }
+            }
+        })
+
+        //全局注册组件
+        Vue.component('helloword', hello)
+
+        // 注册组件(局部注册)
+        new Vue({
+            el: '#root',
+            components: {
+                // 属性与值相同时可以简写，本来应该写成school:school
+                school,
+                student
+            }
+        })
+
+        // -----------------------------全局组件使用-------------------------------------
+
+    </script>
+</body>
+
+</html>

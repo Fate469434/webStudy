@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>粉红色的回忆</div>
+    <script>
+        let box=document.querySelector('div')
+        box.innerText='有点意思'
+        // innerText不能识别标签，这样写无效：box.innerText='<strong>有点意思</strong>'
+        // innerHTML可以解析标签
+        box.innerHTML='<strong>有点意思</strong>'
+
+        // --------------------------------
+/* 
+        1.设置/修改DOM元素内容有哪3钟方式?
+        document.write()方法
+        元素.innerText属性
+        元素.innerHTML属性
+        
+        2.三者的区别是什么?
+        document.write()方法只能追加到body中
+        元素.innerText属性只识别内容，不能解析标签
+        元素.innerHTML属性能够解析标签
+        如果还在纠结到底用谁，你可以选择innerHTML
+ */
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            /* 解法一 父元素设置padding,子元素的padding可以不删除*/
+            /* padding-top: 40px; */
+
+            /* 解法二 父元素设置border，但如果设计稿没有border，这种方法就用不了 */
+            /* border: 1px solid #000; */
+
+            /* 解法三 目前为止这是最好的方法*/
+            /* overflow: hidden; */
+        }
+        .son{
+            /* 解法四 子元素转为行内块*/
+            /* display: inline-block; */
+
+            /* 解法五 设置浮动，后面会讲 */
+
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            margin-top: 40px;/*带着父元素下移了*/
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <!-- 什么是塌陷： -->
+    <img src="./塌陷问题.png" alt="">
+</body>
+</html>

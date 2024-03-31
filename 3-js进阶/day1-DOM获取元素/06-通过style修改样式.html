@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        let box=document.querySelector('div')
+        // box.style.background='hotpink'
+        box.style.width='300px'
+        box.style.backgroundColor='skyblue'
+
+        // 注意:
+        // 1.修改样式通过style属性引出
+        // 2.如果属性有-连接符，需要转换为小驼峰命名法,例如 background-color与backgroundColor
+        // 3.赋值的时候，需要的时候不要忘记加cSs单位
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 写法1
+        // 第一个小括号是形参，第二个是实参
+        // (function(){})()
+
+        // 使用场景，避免全局变量时间的污染
+        let num=10
+        (function(){
+            let num=20
+        })();
+
+        // 写法2
+        // (function(){}())
+        // (function fun(){}())
+
+        // ------敲重点--------
+        // ------敲重点--------
+
+        // 两个立即函数之间一定要用;分隔开，不管他们之间是否有其他代码
+        // 因此一般写完一个立即执行函数加一个;
+
+        // ------敲重点--------
+        // ------敲重点--------
+
+    </script>
+</body>
+</html>

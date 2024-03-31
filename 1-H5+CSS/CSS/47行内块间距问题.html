@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            /* div变成行内块以后，两个div之间会有一个空隙，而这个空隙并不是margin造成的 */
+            /* 解决空隙的办法是在编辑器里将两个标签写在同一行 */
+            display: inline-block;
+        }
+        .one{
+            background-color: pink;
+        }
+        .two{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+    
+    <!-- 解法1： -->
+    <!-- <div class="one"></div><div class="two"></div> -->
+
+    <!-- 解法2：浮动 -->
+    
+</body>
+</html>

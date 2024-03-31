@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+ctrl+D:选中下一个与当前选择字符相同的东西
+光标放在当前行，ctrl+C快速复制，ctrl+v快速粘贴，不需要shift选中，不需要移动光标
+
+ctrl+shift+t: 打开上次关闭的标签页面
+ctrl+w: 关闭当前标签页
+
+ctrl+enter:向下空行
+ctrl+shift+enter:向上空行
+
+ctrl+3:分频切换
+
+Ctrl  +  [      和   Ctrl  +  ]     实现文本的向左移动或者向右移动；
+
+Shift  +  Alt  + F     实现代码的对齐；
+
+安装包：                                              npm i moment
+安装指定版本的包：                                     npm i moment@2.22.2
+快速创建package.json:                                 npm init -y  使用这条命令时路径中不能有中文和空格
+根据package.json一次性安装所有需要的包：                npm install / npm i
+卸载包：                                              npm uninstall moment
+安装指定包，并记录到devDependencies节点中:              npm i 包名 -D / npm i 包名 --save-dev
+<!-- 
+开发依赖包(被记录到devDependencies节点中的包，只在开发期间会用到)
+核心依赖包(被记录到dependencies 节点中的包，在开发期间和项目上线之后都会用到)
+-->
+查看当前的下包镜像源                                   npm config get registry
+将下包的镜像源切换为淘宝镜像源                          npm config set registry=https://registry.npm.taobao.org/
+检查镜像源是否下载成功                                 npm config get registry
+
+安装nrm                                               npm i nrm -g  -g表示安装为全局可用的工具npm i nrm -g
+查看所有可用镜像源                                     nrm ls
+将下包镜像源切换为淘宝                                 nrm use taobao
+注意：nrm ls和nrm use taobao只能在windows命令行终端中使用，不能在vscode的终端中使用，原因不明
+
+快速生成组件标签：   组件标签名+shift+> 根据提示回车
+
+全局安装@vue/cli:   npm install -g @vue/cli
+创建vue项目：       vue create xxxxe
+启动项目：          npm run servee
+
+</body>
+</html>

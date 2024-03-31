@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./tianshi.gif" alt="">
+    <script>
+        let img = document.querySelector('img')
+        document.addEventListener('mousemove', function (ev) {
+            // 不断得到当前坐标
+            // console.log(ev.pageX);
+            // console.log(ev.pageY);
+            img.style.top = ev.pageY - 40 + 'px'
+            img.style.left = ev.pageX - 40 + 'px'
+        })
+    </script>
+</body>
+
+</html>

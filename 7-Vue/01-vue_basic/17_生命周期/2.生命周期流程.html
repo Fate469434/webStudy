@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root" v-bind:x="n">
+        <h1>当前n值是{{n}}</h1>
+        <button @click="add">n++</button>
+        <button @click="bye">销毁vm,vue示例不再管理容器，因此n++失效</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                'n':1
+            },
+            methods: {
+                add(){
+                    this.n++
+                    console.log('add');
+                },
+                bye(){
+                    console.log('good bye');
+                    this.$destroy()
+                }
+            },
+            watch:{
+                n(){
+                    console.log('n变了');
+                }
+            },
+            beforeCreate() {
+                console.log('beforCreate');
+            },
+            created() {
+                console.log('created');
+                // debugger
+            },
+            beforeMount() {
+                console.log('beforMount');
+                // debugger
+            },
+            mounted() {
+                console.log('mounted');
+            },
+            beforeUpdate() {
+                console.log('beforUpdate');
+                // console.log(this.n);
+                // debugger
+            },
+            updated() {
+                console.log('updated');
+                // console.log(this.n);
+                // debugger
+            },
+            beforeDestroy() {
+                console.log('beforeDestroy');
+                console.log(this.n);
+            },
+            destroyed() {
+                console.log('destroyed');
+                console.log(this.n);
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 时间对象里的方法 -->
+    <img src="./时间对象.png" alt="" width="500px">
+
+    <script>
+        // 小括号为空得到系统当前时间
+        let date = new Date()
+        console.log(date);
+
+        // 小括号里写上时间可以自定义时间
+        let last=new Date('2022-12-11 14:32:10')
+        console.log(last);
+
+        // 获取年月日
+        console.log(date.getFullYear());
+        console.log(date.getMonth()+1);
+        console.log(date.getDate());
+        // 获取时分秒
+        console.log(date.getHours());
+        console.log(date.getMinutes());
+        console.log(date.getSeconds());
+        // 星期几
+        console.log(date.getDay());
+        
+        // 显示年月日+时分秒
+        document.write(new Date().toLocaleString())
+        // 显示年月日
+        new Date().toLocaleDateString()
+        // 显示时分秒
+        new Date().toLocaleTimeString()
+    </script>
+</body>
+
+</html>

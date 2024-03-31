@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        let box=document.querySelector('.box')
+        // 一般用data-开头来自定义属性
+        box.setAttribute('data-myid',10)
+        box.setAttribute('data-myname','LiHua')
+
+        // 获取自定义属性的值有两种方式
+        // 方式1
+        alert(box.getAttribute('data-myid'))
+        alert(box.getAttribute('data-myname'))
+        // 方式二
+        alert(box.dataset.myid)
+        alert(box.dataset.myname)
+        
+    </script>
+</body>
+</html>

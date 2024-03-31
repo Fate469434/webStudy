@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            margin: 100px auto;
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+
+        .son {
+
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <!-- 要知道的是 -->
+    <!-- 与mosuseover相对的是mouseout ,这俩有冒泡效果-->
+    <!-- 与mouseenter相对的是mouseleave ,这俩没有冒泡效果，推荐使用-->
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        let fa=document.querySelector('.father')
+        let son=document.querySelector('.son')
+        fa.addEventListener('mouseover',function(){
+            console.log(111);
+        })
+
+        fa.addEventListener('mouseenter',function(){
+            console.log(222);
+        })
+        // 使用mouseover的时候，鼠标在子盒子和父盒子之间来回移动会不断触发log(111)
+        // 这是不合理的，毕竟，子盒子本身属于父盒子的一部分，相当于在父盒子内部移动，这不应该触发log(111)
+    </script>
+</body>
+</html>

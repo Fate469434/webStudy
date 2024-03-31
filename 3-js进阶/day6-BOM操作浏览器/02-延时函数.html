@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 看图 -->
+    <img src="./延时函数.png" alt="">
+    <script>
+        // setTimeout(回调函数，延迟执行的毫秒数)
+        let timer=setTimeout(function(){
+            alert('延迟3秒执行')
+        },5000)
+
+        // 清除定时器
+        clearTimeout(timer)
+    </script>
+</body>
+</html>

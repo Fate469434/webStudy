@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">我是一个盒子</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        //---------获取一个元素----------------
+        // document.querySelector('box')
+        let div=document.querySelector('.box')
+        console.log(div)
+        let li=document.querySelector('ul li:last-child')
+        console.log(li);
+        console.log('分割线分割线');
+
+        //---------获取多个元素----------------
+        let lis=document.querySelectorAll('ul li')
+        console.log(lis)
+/*         
+        querySelectorAll得到的是一个伪数组,哪怕里面只有一个元素:
+        有长度有索引号的数组
+        但是没有pop() push()等数组方法
+        想要得到里面的每一个对象，则需要遍历( for)的方式获得。
+ */
+        console.log('分割线分割线')
+        for(let i=0; i<lis.length; i++){
+            console.log(lis[i]);
+        }
+
+
+        //-----------其他获取元素的方式(了解)------------
+        //根据id获取一个元素
+        document.getElementById( 'nav' )
+        //根据标签获取一类元素获取页面所有
+        divdocument.getElementsByTagName( 'div')
+        //根据类名获取元素获取页面所有类名为w的
+        document.getElementsByClassName( 'w')
+
+    </script>
+</body>
+</html>

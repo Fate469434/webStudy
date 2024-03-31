@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr {
+            border-collapse: collapse;
+        }
+
+        td,th {
+            border: 5px solid pink;
+        }
+        /* 这里会发现，两个相邻单元格之间的边框是5+5=10，
+        所以看起来很粗，可以用下面的属性来设置边框合二为一 */
+        /* table,
+        td,
+        th {
+            border-collapse: collapse;
+        } */
+
+        /* table,th,td各自都有自己的边框 */
+        /* 而经过这样设置之后，table自己的border就不起作用了,因此第35行的border="3px solid"会失效 */
+
+    </style>
+</head>
+
+<body>
+    <!-- cellspadding：单元格边框与单元格内容之间的间距 -->
+
+    <!-- cellspacing=0可以设置单元格之间空隙为0 ,这个属性不能写在css里-->
+    <table border="3px solid" width="500" height="300" cellspacing=0>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

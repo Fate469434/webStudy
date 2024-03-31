@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner{
+            position: relative;
+            width: 1226px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        .mask{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            /* 由于浮动起来的div无法悬浮在图片上，所以这里没法用浮动来解决问题 */
+            /* 即使div可以悬浮在图片之上，也没办法设置其与图片底部的距离 */
+            width: 1226px;
+            height: 150px;
+            background-color: rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="./bg.jpg" alt="">
+        <!-- 遮罩 -->
+        <div class="mask">
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 1000px;
+            height: 1000px;
+            background-color: pink;
+        }
+
+        .mask{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        .box .active{
+            display: none;
+        }
+        
+        .fa{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="fa">
+            <div class="mask active">
+                1
+            </div>
+        </div>
+        <div class="fa">
+            <div class="mask">
+                2
+            </div>
+        </div>
+        <div class="fa">
+            <div class="mask">
+                3
+            </div>
+        </div>        
+    </div>
+
+    <script>
+        let fas=document.querySelectorAll('.fa')
+        for(let i=0;i<fas.length;i++){
+            fas[i].addEventListener('mouseenter',function(){
+                document.querySelector('.fa .mask.active').classList.remove('active')
+                fas[i].children[0].classList.add('active')
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 简单来说就是点击输入框外面文字可以使光标聚焦在输入框，而不仅仅只是点击输入框才聚焦 -->
+
+    <!-- 场景:常用于绑定内容与表单标签的关系标签名: label          -->
+    <!-- 使用方法①:                                               -->
+    <!-- 1．使用label标签把内容(如:文本)包裹起来                   -->
+    <!-- 2．在表单标签上添加id属性                                  -->
+    <!-- 3. 在label标签的for属性中设置对应的id属性值>               -->
+    <!-- 使用方法②:                                               -->
+    <!-- 1．直接使用label标签把内容(如:文本)和表单标签一起包裹起来   -->
+    <!-- 2．需要把label标签的for属性删除即可                        -->
+    性别：
+    
+    <!-- 方法一 -->
+    <input type="radio" name="sex" id="nan"><label for="nan">男</label>
+    <!-- 方法二 -->
+    <label><input type="radio" name="sex">女</label>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Number，string,boolean1,undefined,null
+        console.log(typeof 123);
+        console.log(typeof '123');
+        console.log(typeof false);
+        console.log(typeof undefined);
+        console.log(typeof null);
+        console.log('---------------分割线---------------');
+
+        // 坑:使用表单、prompt 获取过来的数据默认是字符串类型的，此时就不能直接简单的进行加法运算。
+        let age=prompt('你今年多大')
+        console.log(age,typeof age);
+
+
+
+        // 隐式转换，18转换为字符串
+        console.log('我今年'+18);
+        // 小技巧，字符串转数字
+        let num='10'
+        console.log(+num)
+/*      规则：
+        +号两边只要有一个是字符串，都会把另外一个转成字符串
+        除了+以外的算术运算符比如 - * / 等都会把数据转成数字类型
+        +号作为正号解析可以转换成Number 
+*/
+        console.log('---------------分割线---------------');
+
+
+        // 显示转换
+        // 转为数字
+        console.log(Number('10.23'));
+        // 转为整数
+        console.log(parseInt('10.23'));
+        // 转为小数
+        console.log(parseFloat('10.23'));
+
+        // 区别:
+        // 1.Number()只能放数字类型的字符，不能放abc这样的,否则返回的是 NaNnot A number
+        // parseFloat经常用于过滤px单位
+        console.log(Number('100px'));
+        console.log(parseInt('100px'));
+        console.log(parseFloat('100px'));
+
+        // 转为字符串
+        console.log(String(999));
+        let varl=10000;
+        console.log(varl.toString());
+        // 转为二进制
+        console.log(varl.toString(2));
+
+
+    </script>
+</body>
+</html>
