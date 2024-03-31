@@ -21,7 +21,11 @@
         var o = {
             sayHi: function() {
                 console.log('对象方法的this:' + this);
-            }
+                fun=()=>{
+                    console.log('对象方法的箭头函数的this:' + this);
+                }
+                fun();
+            },
         }
         o.sayHi();
         // 3. 构造函数 this 指向 ldh 这个实例对象 原型对象里面的this 指向的也是 ldh这个实例对象

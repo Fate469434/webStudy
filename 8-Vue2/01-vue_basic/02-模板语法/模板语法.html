@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../js/vue.js"></script>
+    <script src="../js/vue.js">
+        Vue.config.productionTip = false
+    </script>
 </head>
 <!-- 
 				Vue模板语法有2大类：
@@ -29,7 +31,7 @@
         <hr />
         <h1>指令语法</h1>
         <a v-bind:href="school.url" v-bind:x="hello">点我去{{school.name}}</a>
-        <!-- v-bind可以简写为冒号： -->
+        <!-- v-bind可以简写为冒号 ： -->
     </div>
 </body>
 <script>

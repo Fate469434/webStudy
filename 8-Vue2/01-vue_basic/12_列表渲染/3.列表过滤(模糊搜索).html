@@ -69,7 +69,7 @@
 						}
 						return arr
 						
-						// 莫名其妙报错：
+						// 莫名其妙报错(this是windows而不是vue实例)：
 						return this.persons.filter(function(per){
 							return per.name.includes(this.keyWord)===true
 						})
