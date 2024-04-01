@@ -8,6 +8,8 @@
 </head>
 <body>
 
+vscode插件安装：live server、Vue 3 Snippets、Vetur
+
 ctrl+D:选中下一个与当前选择字符相同的东西
 光标放在当前行，ctrl+C快速复制，ctrl+v快速粘贴，不需要shift选中，不需要移动光标
 
@@ -23,6 +25,13 @@ Ctrl  +  [      和   Ctrl  +  ]     实现文本的向左移动或者向右移�
 
 Shift  +  Alt  + F     实现代码的对齐；
 
+要操作光标所在文件中的所有代码块：
+折叠所有 Ctrl+K+0
+展开所有 Ctrl+K+J
+仅仅操作光标所处代码块内的代码：
+折叠 Ctrl+Shift+[
+展开 Ctrl+Shift+]
+
 安装包：                                              npm i moment
 安装指定版本的包：                                     npm i moment@2.22.2
 快速创建package.json:                                 npm init -y  使用这条命令时路径中不能有中文和空格
@@ -35,6 +44,7 @@ Shift  +  Alt  + F     实现代码的对齐；
 -->
 查看当前的下包镜像源                                   npm config get registry
 将下包的镜像源切换为淘宝镜像源                          npm config set registry=https://registry.npm.taobao.org/
+淘宝镜像源2024.01过期，换新的                          npm config set registry https://registry.npmmirror.com
 检查镜像源是否下载成功                                 npm config get registry
 
 安装nrm                                               npm i nrm -g  -g表示安装为全局可用的工具npm i nrm -g
@@ -44,7 +54,7 @@ Shift  +  Alt  + F     实现代码的对齐；
 
 快速生成组件标签：   组件标签名+shift+> 根据提示回车
 
-全局安装@vue/cli:   npm install -g @vue/cli
+全局安装vue脚手架:   npm install -g @vue/cli
 创建vue项目：       vue create xxxxe
 启动项目：          npm run servee
 
