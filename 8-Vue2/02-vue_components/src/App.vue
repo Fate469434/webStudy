@@ -1,28 +1,43 @@
 <template>
-  <div>
-    <h1 v-text="msg" ref="title"></h1>
-    <button @click="showDOM" ref="btn">点我输出上面的DOM元素</button>
-    <School ref='sch' id='sch' />
+  <div id="root">
+    <div class="todo-container">
+      <div class="todo-wrap">
+        <MyHeader/>
+        <MyList/>
+        <MyFooter/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import School from './components/Student.vue'
-  export default {
-    name:'App',
-    data() {
-      return {
-        msg:'欢迎学习前端'
-      }
-    },
-    components:{School},
-    methods: {
-      showDOM(){
-        // console.log(this.$refs.title);
-        // 注意下面两种获取元素的区别
-        console.log(this.$refs);
-        console.log(document.querySelector('#sch'));
-      }
-    },
-  }
+import MyHeader from "./components/MyHeader.vue";
+import MyList from "./components/MyList.vue";
+import MyFooter from "./components/MyFooter.vue";
+
+export default {
+  name: "App",
+  components: {
+    MyHeader,
+    MyList,
+    MyFooter
+  },
+};
 </script>
+
+<style>
+/*base*/
+body {
+  background: #fff;
+}
+
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+}
+.todo-container .todo-wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+</style>
