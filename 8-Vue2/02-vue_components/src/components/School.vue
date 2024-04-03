@@ -2,24 +2,29 @@
 	<div class="school">
 		<h2>学校名称：{{name}}</h2>
 		<h2>学校地址：{{address}}</h2>
-		<button @click="sendSchoolName">把学校名给App</button>
 	</div>
 </template>
 
 <script>
+	import pubsub from 'pubsub-js'
 	export default {
 		name:'School',
-		props:['getSchoolName'],
 		data() {
 			return {
 				name:'尚硅谷',
 				address:'北京',
 			}
 		},
-		methods: {
-			sendSchoolName(){
-				this.getSchoolName(this.name)
-			}
+		mounted() {
+			// 注意这里不写箭头函数的话this指向为空
+			this.pubId = pubsub.subscribe('hello',(msgName,data)=>{
+				console.log(this)
+				console.log('有人发布了hello消息，hello消息的回调执行了',msgName,data)
+			})
+		},
+		beforeDestroy() {
+			// this.$bus.$off('hello')
+			pubsub.unsubscribe(this.pubId)
 		},
 	}
 </script>

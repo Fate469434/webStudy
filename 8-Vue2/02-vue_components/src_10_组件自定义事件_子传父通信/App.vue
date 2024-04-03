@@ -9,7 +9,10 @@
 		<!-- <Student @atguigu="getStudentName" @demo="m1"/> -->
 
 		<!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第二种写法，使用ref） -->
-		<Student ref="student" @click.native="show"/>
+		<Student ref="student"/>
+
+		<!-- 组件绑定原生js实事件，加native修饰 -->
+		<Student @click.native="show"/>
 	</div>
 </template>
 

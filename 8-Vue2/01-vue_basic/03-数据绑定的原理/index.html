@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue双向绑定原理</title>
+</head>
+<body>
+    <div id="app">
+        <span>我是：{{ name }}</span>
+        <input type="text" v-model="name">
+        <span>更多喜好： {{ more.like.me }}</span>
+        <input type="text" v-model="more.like.me">
+    </div>
+ 
+    <script src="./vue.js"></script>
+ 
+    <script>
+        // 创建Vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: '小草莓',
+                more: {
+                    like: {
+                       me: '吃吃吃'
+                    }
+                }
+            }
+        })
+        console.log('打印vm', vm)
+    </script>
+</body>
+</html>
