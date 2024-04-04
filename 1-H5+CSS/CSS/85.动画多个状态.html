@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+
+            /* 使用动画 */
+            animation: change 3s;
+        }
+
+        /* 第一步，定义动画 */
+        /* 百分百是动画总时长的百分比 */
+        @keyframes change {
+            0%{
+                width: 200px;
+            }
+            50%{
+                width: 400px;
+            }
+            100%{
+                width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

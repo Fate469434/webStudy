@@ -1,5 +1,5 @@
 {
-  "name": "02-vue_more",
+  "name": "02-vue_components",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,10 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "less-loader": "^11.1.0",
-    "nanoid": "^4.0.2",
-    "pubsub-js": "^1.9.4",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "vue-resource": "^1.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
