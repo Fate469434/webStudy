@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup name="Person">
-  import {ref} from 'vue'
+  import {ref,defineExpose} from 'vue'
 
   // 创建一个title2，用于存储ref标记的内容
   let title2 = ref()
@@ -19,7 +19,7 @@
   function showLog(){
     console.log(title2.value)
   }
-
+// 使父组件可以看子组件的数据
   defineExpose({a,b,c})
 </script>
 

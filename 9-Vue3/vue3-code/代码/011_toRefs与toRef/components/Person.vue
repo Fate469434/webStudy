@@ -19,6 +19,10 @@
   // 使用toRefs从person这个响应式对象中，解构出name、age，且name和age依然是响应式的
   // name和age的值是ref类型，其value值指向的是person.name和person.age
   let {name,age} = toRefs(person)
+  console.log(name);
+  console.log(age);
+  console.log(person);
+  
   let nl = toRef(person,'age')
   
   console.log(nl.value)

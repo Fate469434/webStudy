@@ -53,6 +53,15 @@
         content:news.content
       }
     })
+    // push跳转的路由可以回退
+    // router.push({
+    //   name:'xiang',
+    //   query:{
+    //     id:news.id,
+    //     title:news.title,
+    //     content:news.content
+    //   }
+    // })
   }
 
 </script>
