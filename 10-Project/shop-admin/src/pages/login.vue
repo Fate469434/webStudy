@@ -14,8 +14,8 @@
                     <span>账号密码登录</span>
                     <span class="line"></span>
                 </div>
-                <el-form :model="form" class="w-[250px]">
-                    <el-form-item>
+                <el-form ref="formRef" :rules="rules" :model="form" class="w-[250px]">
+                    <el-form-item prop="username">
                         <el-input v-model="form.username" placeholder="请输入用户名">
                             <template #prefix>
                                 <el-icon>
@@ -24,8 +24,8 @@
                             </template>
                         </el-input>
                     </el-form-item>
-                    <el-form-item>
-                        <el-input v-model="form.password" placeholder="请输入密码">
+                    <el-form-item prop="password">
+                        <el-input type="password" show-password v-model="form.password" placeholder="请输入密码">
                             <template #prefix>
                                 <el-icon>
                                     <Lock />
@@ -35,7 +35,8 @@
                     </el-form-item>
                     <el-form-item>
                         <el-button round color="#626aef" class="w-[250px]" type="primary"
-                            @click="onSubmit">登录</el-button>
+                            @click="onSubmit"
+                            :loading="loading">登录</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
@@ -45,43 +46,96 @@
 
 <script setup>
 
-import { reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import { login, getinfo } from '../api/manager';
+import { useRouter } from 'vue-router';
+import { setToken } from '../conposables/auth';
+import { notify } from '../conposables/util';
 
+const router = useRouter()
+// 数据
 const form = reactive({
-    username: "",
-    password: ""
+    username: "admin",
+    password: "admin"
 })
 
-const onSubmit = () => {
-    console.log('submit!')
+const rules = {
+    username: [
+        {
+            required: true,
+            message: '用户名不能为空',
+            trigger: 'blur'
+        },
+    ],
+    password: [
+        {
+            required: true,
+            message: '密码不能为空',
+            trigger: 'blur'
+        },
+    ]
 }
+
+const formRef = ref()
+
+const loading = ref(false)
+
+// 方法
+function onSubmit() {
+    async function fun(valid) {
+        if (!valid) { return false }
+        loading.value = true
+        try {
+            const res = await login(form.username, form.password)
+            // 提示登录成功
+            notify("登陆成功")
+            // 存储token
+            setToken(form.username, res.token)
+            // 获取用户相关信息
+            const userdata = await getinfo(form.username)
+            console.log(userdata);
+            // 跳转到后台首页
+            router.push("/")
+        }
+        catch (err) { }
+        loading.value = false
+    }
+
+    formRef.value.validate(fun)
+}
+
 </script>
 
 <style>
-.login-container{
+.login-container {
     @apply min-h-screen bg-indigo-500;
 }
 
-.login-container .left{
+.login-container .left {
     @apply flex items-center justify-center;
 }
-.login-container .right{
+
+.login-container .right {
     @apply flex items-center justify-center flex-col bg-light-50;
 }
 
-.left>div>div:first-child{
+.left>div>div:first-child {
     @apply font-bold text-5xl text-light-50 mb-4;
 }
-.left>div>div:last-child{
+
+.left>div>div:last-child {
     @apply text-gray-200 text-sm;
 }
-.right .title{
+
+.right .title {
     @apply font-bold text-3xl text-gray-800;
 }
-.right>div{
+
+.right>div {
     @apply flex items-center justify-center my-5 text-gray-300 space-x-2;
 }
-.right .line{
+
+.right .line {
     @apply h-[1px] w-16 bg-gray-200;
 }
 </style>
