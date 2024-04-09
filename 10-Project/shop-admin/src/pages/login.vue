@@ -34,8 +34,7 @@
                         </el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button round color="#626aef" class="w-[250px]" type="primary"
-                            @click="onSubmit"
+                        <el-button round color="#626aef" class="w-[250px]" type="primary" @click="onSubmit"
                             :loading="loading">登录</el-button>
                     </el-form-item>
                 </el-form>
@@ -45,15 +44,15 @@
 </template>
 
 <script setup>
-
-import { ref, reactive, onMounted } from 'vue'
-import { login, getinfo } from '../api/manager';
+import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router';
-import { setToken } from '../conposables/auth';
 import { notify } from '../conposables/util';
+import { myStore } from '~/store'
 
 const router = useRouter()
 // 数据
+const store = myStore()
+
 const form = reactive({
     username: "admin",
     password: "admin"
@@ -86,23 +85,31 @@ function onSubmit() {
         if (!valid) { return false }
         loading.value = true
         try {
-            const res = await login(form.username, form.password)
+            await store.user_login(form.username, form.password)
             // 提示登录成功
             notify("登陆成功")
-            // 存储token
-            setToken(form.username, res.token)
-            // 获取用户相关信息
-            const userdata = await getinfo(form.username)
-            console.log(userdata);
             // 跳转到后台首页
             router.push("/")
         }
-        catch (err) { }
+        catch (err) { console.log(err); }
         loading.value = false
     }
-
     formRef.value.validate(fun)
 }
+
+// 添加键盘监听事件,回车一键登录
+function keyup(e) {
+    if (e.key == "Enter") {
+        onSubmit()
+    }
+}
+onMounted(() => {
+    document.addEventListener("keyup", keyup)
+})
+
+onBeforeUnmount(() => {
+    document.removeEventListener("keyup", keyup)
+})
 
 </script>
 

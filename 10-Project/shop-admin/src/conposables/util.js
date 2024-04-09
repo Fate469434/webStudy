@@ -1,6 +1,6 @@
 import { ElNotification } from 'element-plus'
 
-// 成功提示
+// 弹窗提示
 function notify(message, type="success",dangerouslyUseHTMLString=false){
     ElNotification({
         message,

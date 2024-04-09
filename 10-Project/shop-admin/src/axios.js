@@ -8,8 +8,7 @@ const service = axios.create({
 
 service.interceptors.request.use(request => {
     // 在发送请求前要做的事儿, 自动带上cookie, 如果有的话
-    const data = request.data;
-    const token = getToken(data.username)
+    const token = getToken("login_token")
     if(token){
         request.headers["token"] = token
     }
