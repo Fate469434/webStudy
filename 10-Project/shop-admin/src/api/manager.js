@@ -21,4 +21,11 @@ async function logout() {
     catch(err){return Promise.reject(err)}
 }
 
-export { login, getinfo, logout }
+async function updatepassword(data){
+    try{
+        return await axios.post("./admin/updatepassword",data)
+    }
+    catch(err){return Promise.reject(err)}
+}
+
+export { login, getinfo, logout ,updatepassword}

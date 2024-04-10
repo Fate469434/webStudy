@@ -1,42 +1,53 @@
-import { defineStore} from 'pinia'
+import { defineStore } from 'pinia'
 import { getinfo } from '../api/manager'
 import { removeToken, setToken } from '../conposables/auth';
 import { login } from '../api/manager';
 
-const myStore = defineStore('myStore',{
-  state(){
+const myStore = defineStore('myStore', {
+  state() {
     return {
-        user:{}
+      user: {},
+      // 侧边栏宽度
+      asideWidth: "250px",
+      menus:[],
+      ruleNames:[]
     }
   },
-  getters:{},
-  actions:{
+  getters: {},
+  actions: {
     // 登录
-    async user_login(username,password){
-        try {
-            const res = await login(username, password)
-            // 存储token
-            setToken(res.token)
-            return Promise.resolve('ok')
-        }
-        catch (err) {
-            return Promise.reject(err)
-         }
+    async user_login(username, password) {
+      try {
+        const res = await login(username, password)
+        // 存储token
+        setToken(res.token)
+        return Promise.resolve('ok')
+      }
+      catch (err) {
+        return Promise.reject(err)
+      }
     },
 
     // 根据token获取用户信息
-    async get_userinfo(){
-        try {
-            const userdata = await getinfo()
-            this.user = userdata
-        }
-        catch (err) { console.log(err);}
+    async get_userinfo() {
+      try {
+        const userdata = await getinfo()
+        this.user = userdata
+        this.menus = userdata.menus
+        this.ruleNames = userdata.ruleNames
+        return Promise.resolve(userdata)
+      }
+      catch (err) { console.log(err); }
     },
 
     // 退出登录，清除用户数据
-    user_logout(){
+    user_logout() {
       removeToken()
       this.user = {}
+    },
+    // 展开和收缩侧边栏
+    handleAsideWidth() {
+      this.asideWidth = this.asideWidth == "250px" ? "64px" : "250px"
     }
 
   }
@@ -44,4 +55,4 @@ const myStore = defineStore('myStore',{
 
 })
 
-export  {myStore}
+export { myStore }

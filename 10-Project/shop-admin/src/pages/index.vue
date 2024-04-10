@@ -1,6 +1,5 @@
 <template>
     后台首页
-    <!-- <el-button @click="handlelogout"></el-button> -->
 </template>
 
 <script setup>

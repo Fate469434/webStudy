@@ -2,12 +2,24 @@
     <div class="f-header">
         <span class="logo">
             <el-icon class="mr-1"><eleme-filled /></el-icon>
-            帝莎编程
+            嘻哈电商
         </span>
-        <el-icon class="icon-btn"><fold /></el-icon>
-        <el-icon class="icon-btn"><refresh /></el-icon>
+        <el-icon class="icon-btn" @click="store.handleAsideWidth()">
+            <fold v-if="store.asideWidth=='250px'"/>
+            <Expand v-else/>
+        </el-icon>
+        <el-tooltip effect="dark" content="刷新" placement="bottom">
+            <el-icon class="icon-btn" @click="handleRefresh">
+                <refresh />
+            </el-icon>
+        </el-tooltip>
         <div class="ml-auto flex items-center">
-            <el-icon class="icon-btn"><full-screen /></el-icon>
+            <el-tooltip effect="dark" content="全屏" placement="bottom">
+                <el-icon class="icon-btn" @click="toggle">
+                    <full-screen v-if="!isFullscreen" />
+                    <aim v-else />
+                </el-icon>
+            </el-tooltip>
             <el-dropdown class="dropdown" @command="handleCommand">
                 <span class="flex items-center text-light-50">
                     <el-avatar class="mr-2" :size="25" :src="store.user.avatar" />
@@ -17,33 +29,113 @@
                     </el-icon>
                 </span>
                 <template #dropdown>
-                <el-dropdown-menu>
-                    <el-dropdown-item command="rePassword">修改密码</el-dropdown-item>
-                    <el-dropdown-item command="logout">退出登录</el-dropdown-item>
-                </el-dropdown-menu>
+                    <el-dropdown-menu>
+                        <el-dropdown-item command="rePassword">修改密码</el-dropdown-item>
+                        <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+                    </el-dropdown-menu>
                 </template>
             </el-dropdown>
         </div>
     </div>
-
+    <FormDrawer ref="formDrawerRef" title="修改密码" destroyOnClose @submit="onSubmit">
+        <el-form ref="formRef" :rules="rules" :model="form" label-width="80px" size="small">
+            <el-form-item prop="oldpassword" label="旧密码">
+                <el-input v-model="form.oldpassword" placeholder="请输入旧密码"></el-input>
+            </el-form-item>
+            <el-form-item prop="password" label="新密码">
+                <el-input type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>
+            </el-form-item>
+            <el-form-item prop="repassword" label="确认密码">
+                <el-input type="password" v-model="form.repassword" placeholder="请输入确认密码" show-password></el-input>
+            </el-form-item>
+        </el-form>
+    </FormDrawer>
 </template>
 
-
-    
-
 <script setup>
+import FormDrawer from '~/components/FormDrawer.vue'
+import { ref, reactive } from 'vue'
 import { myStore } from '~/store';
 import { messagebox, notify } from '~/conposables/util';
 import { logout } from '~/api/manager';
-
+import { useRouter } from 'vue-router';
+import { useFullscreen } from '@vueuse/core'
+import { updatepassword } from '~/api/manager'
+const router = useRouter()
 const store = myStore()
 
-const handleCommand = (c)=>{
-    console.log(c);
+// 参数1：是否为全屏状态 参数2：切换全屏
+const { isFullscreen, toggle } = useFullscreen()
+
+// 修改的密码侧边栏是否显示
+const formDrawerRef = ref(null)
+
+const form = reactive({
+    oldpassword: "",
+    password: "",
+    repassword: ""
+})
+
+const rules = {
+    oldpassword: [
+        {
+            required: true,
+            message: '旧密码不能为空',
+            trigger: 'blur'
+        },
+    ],
+    password: [
+        {
+            required: true,
+            message: '新密码不能为空',
+            trigger: 'blur'
+        },
+    ],
+    repassword: [
+        {
+            required: true,
+            message: '确认密码不能为空',
+            trigger: 'blur'
+        },
+    ]
 }
 
+const formRef = ref(null)
+
+const handleCommand = (c) => {
+    switch (c) {
+        case "logout":
+            handlelogout()
+            break
+        case "rePassword":
+            formDrawerRef.value.open()
+            break
+    }
+}
+
+const onSubmit = () => {
+    async function fun(valid) {
+        if (!valid) { return false }
+        formDrawerRef.value.showLoading()
+        try {
+            await updatepassword(form)
+            // 提示修改成功
+            notify("修改成功")
+            // 跳转回登录页
+            store.user_logout()
+            router.push('/login')
+        }
+        catch (err) { console.log(err); }
+        formDrawerRef.value.hideLoading()
+    }
+    
+    formRef.value.validate(fun)
+}
+
+const handleRefresh = () => location.reload()
+
 async function handlelogout() {
-    await messagebox("是否退出登录页?")
+    await messagebox("是否退出到登录页?")
     // 向后端发送请求
     await logout()
     // 清除用户数据
@@ -52,34 +144,34 @@ async function handlelogout() {
     router.push('/login')
     // 提示信息
     notify("退出登录成功")
-}
 
+}
 
 </script>
 
 <style>
-.f-header{
+.f-header {
     @apply flex items-center bg-indigo-500 text-light-50 fixed top-0 left-0 right-0;
     height: 64px;
 }
 
-.logo{
+.logo {
     width: 250px;
-    @apply flex justify-center items-center text-xl font-thin; 
+    @apply flex justify-center items-center text-xl font-thin;
 }
 
-.icon-btn{
+.icon-btn {
     @apply flex justify-center items-center;
     width: 42px;
     height: 64px;
     cursor: pointer;
 }
 
-.icon-btn:hover{
+.icon-btn:hover {
     @apply bg-indigo-600;
 }
 
-.f-header .dropdown{
+.f-header .dropdown {
     height: 64px;
     cursor: pointer;
     @apply flex justify-center items-center mx-5;

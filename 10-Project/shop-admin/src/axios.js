@@ -3,13 +3,13 @@ import { getToken } from "./conposables/auth"
 import { notify } from "./conposables/util"
 
 const service = axios.create({
-    baseURL:"/api"
+    baseURL: "/api"
 })
 
 service.interceptors.request.use(request => {
     // 在发送请求前要做的事儿, 自动带上cookie, 如果有的话
     const token = getToken()
-    if(token){
+    if (token) {
         request.headers["token"] = token
     }
     return request
@@ -26,7 +26,8 @@ service.interceptors.response.use(response => {
 }, err => {
     // 在请求错误时要做的事儿
     // 该返回的数据则是axios.catch(err)中接收的数据
-    notify(err.response.data.msg || "请求失败","error")
+    const msg = err.response.data.msg || "请求失败"
+    notify(msg, "error")
     return Promise.reject(err)
 })
 
