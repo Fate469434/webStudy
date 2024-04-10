@@ -1,14 +1,14 @@
 import { useCookies } from '@vueuse/integrations/useCookies'
 const cookie = useCookies()
 
-function getToken(key){
-    return cookie.get(key)
+function getToken(){
+    return cookie.get("login-token")
 }
-function setToken(key,value){
-    cookie.set(key,value)
+function setToken(value){
+    cookie.set("login-token",value)
 }
-function removeToken(key){
-    cookie.remove(key)
+function removeToken(){
+    cookie.remove("login-token")
 }
 
 export {getToken,setToken,removeToken}

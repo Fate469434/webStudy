@@ -1,7 +1,6 @@
 import { defineStore} from 'pinia'
 import { getinfo } from '../api/manager'
-import { setToken } from '../conposables/auth';
-import { notify } from '../conposables/util';
+import { removeToken, setToken } from '../conposables/auth';
 import { login } from '../api/manager';
 
 const myStore = defineStore('myStore',{
@@ -17,7 +16,7 @@ const myStore = defineStore('myStore',{
         try {
             const res = await login(username, password)
             // 存储token
-            setToken("login_token", res.token)
+            setToken(res.token)
             return Promise.resolve('ok')
         }
         catch (err) {
@@ -32,8 +31,17 @@ const myStore = defineStore('myStore',{
             this.user = userdata
         }
         catch (err) { console.log(err);}
+    },
+
+    // 退出登录，清除用户数据
+    user_logout(){
+      removeToken()
+      this.user = {}
     }
+
   }
+
+
 })
 
 export  {myStore}

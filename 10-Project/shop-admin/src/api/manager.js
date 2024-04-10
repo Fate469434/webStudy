@@ -14,4 +14,11 @@ async function getinfo() {
     catch(err){ return Promise.reject(err) }
 }
 
-export { login, getinfo }
+async function logout() {
+    try{
+        return await axios.post("./admin/logout")
+    }
+    catch(err){return Promise.reject(err)}
+}
+
+export { login, getinfo, logout }
