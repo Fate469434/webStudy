@@ -1,8 +1,7 @@
 <template>
     <div class="f-menu" :style="{width:store.asideWidth}">
-        <el-menu unique-opened :default-active="defaultActive" :collapse="isCollapse" :collapse-transition="false"
+        <el-menu unique-opened :default-active="defaultActive" :collapse="isCollapse" 
          @select="handleSelect" class="border-0" >
-
             <template v-for="(item,index) in menus" :key="index">
                 <el-sub-menu v-if="item.child && item.child.length > 0" :index="item.name">
                     <template #title>
@@ -51,7 +50,7 @@ const handleSelect = (path)=>{
 </script>
 <style>
 .f-menu {
-    transition: all 0.4s;
+    transition: all 0.2s;
     width: 250px;
     top: 64px;
     bottom: 0;
@@ -63,4 +62,5 @@ const handleSelect = (path)=>{
 .f-menu::-webkit-scrollbar{
     width: 0;
 }
+
 </style>

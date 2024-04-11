@@ -9,7 +9,11 @@
             </el-aside>
             <el-main>
                 <FTagList/>
-                <router-view></router-view>
+                <router-view v-slot="{ Component }">
+                    <keep-alive :max="10">
+                        <component :is="Component"></component>
+                    </keep-alive>
+                </router-view>
             </el-main>
         </el-container>
     </el-container>
@@ -26,6 +30,6 @@ const store = myStore()
 
 <style>
 .el-aside{
-    transition: all 0.4s;
+    transition: all 0.2s;
 }
 </style>

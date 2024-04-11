@@ -6,6 +6,7 @@ import { login } from '../api/manager';
 const myStore = defineStore('myStore', {
   state() {
     return {
+      isHasUserInfo:false,
       user: {},
       // 侧边栏宽度
       asideWidth: "250px",
@@ -35,6 +36,7 @@ const myStore = defineStore('myStore', {
         this.user = userdata
         this.menus = userdata.menus
         this.ruleNames = userdata.ruleNames
+        this.isHasUserInfo = true
         return Promise.resolve(userdata)
       }
       catch (err) { console.log(err); }

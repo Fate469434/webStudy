@@ -91,6 +91,7 @@ function addRoutes(menus) {
 
 // 全局前置守卫
 router.beforeEach(async (to, from, next) => {
+    // console.log("beforeEach",from.path,to.path);
     const token = getToken()
 
     // 没有登录，强制跳转回登录页
@@ -101,8 +102,8 @@ router.beforeEach(async (to, from, next) => {
 
     // 如果用户登录了，自动获取用户信息，并存储在pinia中
     let hasNewRoutes = false
-    if (token) {
-        const store = myStore();
+    const store = myStore();
+    if (token && !store.isHasUserInfo) {
         let { menus } = await store.get_userinfo()
         // 动态添加路由
         hasNewRoutes = addRoutes(menus)

@@ -5,8 +5,8 @@
             嘻哈电商
         </span>
         <el-icon class="icon-btn" @click="store.handleAsideWidth()">
-            <fold v-if="store.asideWidth=='250px'"/>
-            <Expand v-else/>
+            <fold v-if="store.asideWidth == '250px'" />
+            <Expand v-else />
         </el-icon>
         <el-tooltip effect="dark" content="刷新" placement="bottom">
             <el-icon class="icon-btn" @click="handleRefresh">
@@ -128,7 +128,7 @@ const onSubmit = () => {
         catch (err) { console.log(err); }
         formDrawerRef.value.hideLoading()
     }
-    
+
     formRef.value.validate(fun)
 }
 

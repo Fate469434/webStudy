@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .father {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 300px;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: pink;
+        }
+        .father div{
+            width: 50px;
+            height: 50px;
+            background-color: red
+        }
+    </style>
 </head>
+
 <body>
     <img src="./flex主轴对齐.png" alt="">
     <img src="./flex侧轴对齐.png" alt="">
+
+    <div class='father'>
+        <div class='son'>哈哈哈</div>
+        <div class='son'>哈哈哈</div>
+        <div class='son'>哈哈哈</div>
+        <div class='son'>哈哈哈</div>
+    </div>
+
 </body>
+
 </html>
