@@ -29,7 +29,7 @@
 </template>
 <script setup>
 import { computed ,ref } from 'vue';
-import { useRouter,useRoute} from 'vue-router';
+import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router';
 import { myStore } from '~/store';
 import {storeToRefs} from 'pinia'
 const router = useRouter()
@@ -43,6 +43,11 @@ const isCollapse = computed(()=>{return store.asideWidth=="64px"})
 
 const { menus } = storeToRefs(store)
 
+// 路由发生变化时切换选中的标签页
+onBeforeRouteUpdate((to, from) => {
+    // console.log("onBeforeRouteUpdate",from.path,to.path);
+    defaultActive.value = to.path
+})
 
 const handleSelect = (path)=>{
     router.push(path)

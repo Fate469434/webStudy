@@ -28,4 +28,5 @@ async function updatepassword(data){
     catch(err){return Promise.reject(err)}
 }
 
+
 export { login, getinfo, logout ,updatepassword}

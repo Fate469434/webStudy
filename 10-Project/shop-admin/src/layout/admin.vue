@@ -24,7 +24,6 @@
 import FHeader from './components/FHeader.vue';
 import FMenu from './components/FMenu.vue';
 import FTagList from './components/FTagList.vue';
-import GoodsList from '~/pages/goods/list.vue'
 import { myStore } from '../store';
 
 const store = myStore()

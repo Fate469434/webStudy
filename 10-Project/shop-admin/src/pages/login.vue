@@ -89,7 +89,7 @@ function onSubmit() {
             // 提示登录成功
             notify("登陆成功")
             // 跳转到后台首页
-            router.push("/")
+            router.push("/index")
         }
         catch (err) { console.log(err); }
         loading.value = false
