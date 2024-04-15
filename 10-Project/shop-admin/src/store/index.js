@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { getinfo } from '../api/manager'
-import { removeToken, setToken } from '../conposables/auth';
+import { removeToken, setToken } from '../composables/auth';
 import { login } from '../api/manager';
 
 const myStore = defineStore('myStore', {

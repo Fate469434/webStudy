@@ -46,7 +46,7 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router';
-import { notify } from '../conposables/util';
+import { notify } from '../composables/util';
 import { myStore } from '~/store'
 
 const router = useRouter()

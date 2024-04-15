@@ -7,4 +7,19 @@ async function getImageClassList(page) {
     catch(err){ return Promise.reject(err) }
 }
 
-export {getImageClassList}
+async function createImageClass(data) {
+    try{
+    return axios.post("/admin/image_class",data)
+    }
+    catch(err){ return Promise.reject(err) }
+}
+
+function updateImageClass(id,data){
+    return axios.post("/admin/image_class/"+id,data)
+}
+
+function deleteImageClass(id){
+    return axios.post(`/admin/image_class/${id}/delete`)
+}
+
+export {getImageClassList,createImageClass,updateImageClass,deleteImageClass}
