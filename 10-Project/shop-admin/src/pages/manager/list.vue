@@ -86,7 +86,7 @@
           <el-input v-model="form.password" placeholder="密码"></el-input>
         </el-form-item>
         <el-form-item label="头像" prop="avatar">
-          <el-input v-model="form.avatar"></el-input>
+          <ChooseImage v-model="form.avatar"/>
         </el-form-item>
         <el-form-item label="所属角色" prop="role_id">
           <el-select v-model="form.role_id" placeholder="选择所属角色">
@@ -109,6 +109,7 @@
 <script setup>
 import { ref,reactive,computed } from "vue"
 import FormDrawer from "~/components/FormDrawer.vue";
+import ChooseImage from "~/components/ChooseImage.vue";
 import {
   getManagerList,
   updateManagerStatus,
@@ -162,8 +163,19 @@ function getData(p = null){
 
 getData()
 
+// 删除
+const handleDelete = (id)=>{
+  loading.value = true
+  deleteManager(id).then(res=>{
+    notify("删除成功")
+    getData()
+  })
+  .finally(()=>{
+    loading.value = false
+  })
+}
 
-// 修改管理员信息
+// 表单部分
 const formDrawerRef = ref(null)
 const formRef = ref(null)
 const form = reactive({
@@ -182,6 +194,8 @@ const handleSubmit = ()=>{
     if(!valid) return 
 
     formDrawerRef.value.showLoading()
+
+    console.log(form);
 
     const fun = editId.value ? updateManager(editId.value,form) : createManager(form)
 
@@ -219,18 +233,6 @@ const handleCreate = ()=>{
     avatar:""
   })
   formDrawerRef.value.open()
-}
-
-// 删除
-const handleDelete = (id)=>{
-  loading.value = true
-  deleteManager(id).then(res=>{
-    notify("删除成功")
-    getData()
-  })
-  .finally(()=>{
-    loading.value = false
-  })
 }
 
 // 编辑
