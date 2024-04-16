@@ -26,9 +26,13 @@ service.interceptors.response.use(response => {
 }, err => {
     // 在请求错误时要做的事儿
     // 该返回的数据则是axios.catch(err)中接收的数据
-    const msg = err.response.data.msg || "请求失败"
-    if(msg.includes("仅供演示，禁止操作"))
-    notify("仅供演示，禁止操作原有数据，或许你可以尝试新增数据并修改或删除它", "error")
+    let msg = err.response.data.msg
+    if(msg.includes("仅供演示")){
+        console.log(msg);
+        msg = "仅供演示，禁止操作原有数据，或许你可以尝试新增数据并修改或删除它"
+    }
+    notify(msg, "error")
+    
     return Promise.reject(err)
 })
 

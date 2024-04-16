@@ -17,7 +17,7 @@
           <el-button type="primary" size="small" text @click="openSetRule(scope.row)">配置权限</el-button>
           <el-button type="primary" size="small" text @click="handleEdit(scope.row)">修改</el-button>
 
-          <el-popconfirm title="是否要删除该公告？" confirmButtonText="确认" cancelButtonText="取消"
+          <el-popconfirm title="是否要删除该角色？" confirmButtonText="确认" cancelButtonText="取消"
             @confirm="handleDelete(scope.row.id)">
             <template #reference>
               <el-button text type="primary" size="small">删除</el-button>

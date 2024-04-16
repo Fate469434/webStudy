@@ -70,6 +70,29 @@ export function useInitTable(opt = {}) {
             })
     }
 
+    // 多选选中ID
+    const multiSelectionIds = ref([])
+    const handleSelectionChange = (e) => {
+        multiSelectionIds.value = e.map(o => o.id)
+    }
+    // 批量删除
+    const multipleTableRef = ref(null)
+    const handleMultiDelete = () => {
+        loading.value = true
+        opt.delete(multiSelectionIds.value)
+            .then(res => {
+                notify("删除成功")
+                // 清空选中
+                if (multipleTableRef.value) {
+                    multipleTableRef.value.clearSelection()
+                }
+                getData()
+            })
+            .finally(() => {
+                loading.value = false
+            })
+    }
+
 
     return {
         searchForm,
@@ -81,7 +104,10 @@ export function useInitTable(opt = {}) {
         limit,
         getData,
         handleDelete,
-        handleStatusChange
+        handleStatusChange,
+        handleSelectionChange,
+        multipleTableRef,
+        handleMultiDelete
     }
 }
 
@@ -102,7 +128,14 @@ export function useInitForm(opt = {}) {
 
             formDrawerRef.value.showLoading()
 
-            const fun = editId.value ? opt.update(editId.value, form) : opt.create(form)
+            let body = {}
+            if(opt.beforeSubmit && typeof opt.beforeSubmit == "function"){
+                body = opt.beforeSubmit({ ...form })
+            } else {
+                body = form
+            }
+
+            const fun = editId.value ? opt.update(editId.value, body) : opt.create(body)
 
             fun.then(res => {
                 notify(drawerTitle.value + "成功")
