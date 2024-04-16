@@ -3,7 +3,7 @@
 
         <el-tabs v-model="activeTab" type="card" class="flex-1" @tab-remove="removeTab" style="min-width:100px;"
             @tab-change="changeTab">
-            <el-tab-pane :closable="item.path != '/index'" v-for="item in tabList" :key="item.path" :label="item.title"
+            <el-tab-pane :closable="item.path != '/'" v-for="item in tabList" :key="item.path" :label="item.title"
                 :name="item.path"></el-tab-pane>
         </el-tabs>
 
@@ -40,7 +40,7 @@ const activeTab = ref(route.path)
 const tabList = ref([
     {
         title: '后台首页',
-        path: "/index"
+        path: "/"
     },
     {
         title: '商城管理',
@@ -110,15 +110,15 @@ const removeTab = (t) => {
 const handleClose = (c) => {
     if (c == "clearAll") {
         // 切换回首页
-        activeTab.value = "/index"
+        activeTab.value = "/"
         // 过滤只剩下首页
         tabList.value = [{
             title: '后台首页',
-            path: "/index"
+            path: "/"
         }]
     } else if (c == "clearOther") {
         // 过滤只剩下首页和当前激活
-        tabList.value = tabList.value.filter(tab => tab.path == "/index" || tab.path == activeTab.value)
+        tabList.value = tabList.value.filter(tab => tab.path == "/" || tab.path == activeTab.value)
     }
     cookie.set("tabList", tabList.value)
 }

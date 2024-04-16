@@ -195,8 +195,6 @@ const handleSubmit = ()=>{
 
     formDrawerRef.value.showLoading()
 
-    console.log(form);
-
     const fun = editId.value ? updateManager(editId.value,form) : createManager(form)
 
     fun.then(res=>{

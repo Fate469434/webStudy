@@ -33,7 +33,7 @@ const myStore = defineStore('myStore', {
     async get_userinfo() {
       try {
         const userdata = await getinfo()
-        userdata.menus[0].child[0].frontpath = '/index'
+        // userdata.menus[0].child[0].frontpath = '/index'
         this.user = userdata
         this.menus = userdata.menus
         this.ruleNames = userdata.ruleNames
