@@ -1,6 +1,12 @@
 <template>
     <div v-if="modelValue">
-        <el-image :src="modelValue" fit="cover" class="w-[100px] h-[100px] rounded border mr-2"></el-image>
+        <el-image v-if="typeof modelValue == 'string'" :src="modelValue" fit="cover" class="w-[100px] h-[100px] rounded border mr-2"></el-image>
+        <div v-else class="flex flex-wrap">
+            <div class="relative mx-1 mb-2 w-[100px] h-[100px]" v-for="(url,index) in modelValue" :key="index">
+                <el-icon class="absolute right-[5px] top-[5px] cursor-pointer bg-white rounded-full" style="z-index: 10;" @click="removeImage(url)"><CircleClose /></el-icon>
+                <el-image :src="url" fit="cover" class="w-[100px] h-[100px] rounded border mr-2"></el-image>
+            </div>
+        </div>
     </div>
 
     <div class="choose-image-btn" @click="open">
@@ -19,7 +25,7 @@
             </el-header>
             <el-container>
                 <ImageAside ref="ImageAsideRef" @change="handleAsideChange"/>
-                <ImageMain openChoose ref="ImageMainRef" @choose="handleChoose"/>
+                <ImageMain :limit="limit" openChoose ref="ImageMainRef" @choose="handleChoose"/>
             </el-container>
         </el-container>
 
@@ -36,6 +42,7 @@
 import { ref } from "vue"
 import ImageAside from "~/components/ImageAside.vue"
 import ImageMain from "~/components/ImageMain.vue"
+import { notify } from "~/composables/util";
 
 
 const dialogVisible = ref(false)
@@ -54,7 +61,11 @@ const handleOpenUpload = ()=>ImageMainRef.value.openUploadFile()
 
 
 const props = defineProps({
-    modelValue:[String,Array]
+    modelValue:[String,Array],
+    limit:{
+        type:Number,
+        default:1
+    }
 })
 const emit = defineEmits(["update:modelValue"])
 
@@ -64,11 +75,22 @@ const handleChoose = (e)=>{
 }
 
 const submit = ()=>{
-    if(urls.length){
-        emit("update:modelValue",urls[0])
+    let value = []
+    if(props.limit == 1){
+        value = urls[0]
+    } else {
+        value = [...props.modelValue,...urls]
+        if(value.length > props.limit){
+            return notify("最多还能选择"+ (props.limit - props.modelValue.length) + "张")
+        }
+    }
+    if(value){
+        emit("update:modelValue",value)
     }
     close()
 }
+
+const removeImage = (url)=> emit("update:modelValue",props.modelValue.filter(u=> u != url))
 
 </script>
 <style>

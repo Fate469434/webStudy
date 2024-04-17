@@ -1,51 +1,27 @@
 <template>
-	<div class="container">
+  <div>
+    <!-- 报错 -->
+    <Student name='王五' sex='人妖' :age='age' />
+    {{ age }}
+    <!-- 加冒号就是传整数不会报错 -->
+    <Student name='张三' sex='男' :age='18' />
 
-		<!-- <Category title="游戏">
-			<template scope="atguigu">
-				<ul>
-					<li v-for="(g,index) in atguigu.games" :key="index">{{g}}</li>
-				</ul>
-			</template>
-		</Category>
-
-		<Category title="游戏">
-			<template scope="{games}">
-				<ol>
-					<li style="color:red" v-for="(g,index) in games" :key="index">{{g}}</li>
-				</ol>
-			</template>
-		</Category>
-
-		<Category title="游戏">
-			<template slot-scope="{games}">
-				<h4 v-for="(g,index) in games" :key="index">{{g}}</h4>
-			</template>
-		</Category> -->
-		
-		<Category v-slot="{ games, str, msg } ">
-			<h4 v-for="(g,index) in games" :key="index">{{g}}</h4>
-			{{ str }},
-			{{ msg }}
-		</Category>
-
-	</div>
+    <hr>
+    
+    <!-- v-bind会对表达式进行计算 -->
+    <Student name='李四' sex='女' :age='18+1' />
+  </div>
 </template>
 
 <script>
-	import Category from './components/Category'
-	export default {
-		name:'App',
-		components:{Category},
-	}
+  import Student from './components/Student.vue'
+  export default {
+    name:'App',
+    components:{Student},
+    data() {
+      return {
+        age:18
+      }
+    },
+  }
 </script>
-
-<style scoped>
-	.container,.foot{
-		display: flex;
-		justify-content: space-around;
-	}
-	h4{
-		text-align: center;
-	}
-</style>
