@@ -9,7 +9,7 @@
  } from "~/composables/useSku.js"
  
  const props = defineProps({
-     skuCardId:[Number,String]
+     skuCardId:[Number,String],
  })
  
  const {
