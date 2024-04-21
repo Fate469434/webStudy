@@ -16,11 +16,23 @@ async function messagebox(content = "提示内容", type = "warning", title = ""
         content,
         title,
         {
-            confirmButtonText: 'OK',
-            cancelButtonText: 'Cancel',
+            confirmButtonText: '确认',
+            cancelButtonText: '取消',
             type,
         }
     )
+}
+
+export function showModal(content = "提示内容",type = "warning",title = ""){
+    return ElMessageBox.confirm(
+        content,
+        title,
+        {
+          confirmButtonText: '确认',
+          cancelButtonText: '取消',
+          type,
+        }
+      )
 }
 
 // 有输入消息对话框

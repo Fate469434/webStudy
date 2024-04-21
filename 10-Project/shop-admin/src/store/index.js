@@ -35,7 +35,10 @@ const myStore = defineStore('myStore', {
         const userdata = await getinfo()
         // userdata.menus[0].child[0].frontpath = '/index'
         this.user = userdata
-        this.menus = userdata.menus
+        // this.menus = userdata.menus
+
+        this.menus = userdata.menus.filter((item)=>{return item.name!="分销模块"})
+
         this.ruleNames = userdata.ruleNames
         this.isHasUserInfo = true
         return Promise.resolve(userdata)

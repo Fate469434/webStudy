@@ -100,8 +100,8 @@ const {
 } = useInitTable({
     getList:getRuleList,
     onGetListSuccess:(res)=>{
-        options.value = res.rules
-        tableData.value = res.list
+        options.value = res.rules.filter(item => item.name!='分销模块')
+        tableData.value = res.list.filter(item => item.name!='分销模块')
         defaultExpandedKeys.value = res.list.map(o=>o.id)
     },
     delete:deleteRule,
