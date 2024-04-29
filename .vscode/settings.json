@@ -1,5 +1,6 @@
 {
     "liveServer.settings.root": "",
     "liveServer.settings.CustomBrowser": "chrome",
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "liveServer.settings.port": 5501
 }
