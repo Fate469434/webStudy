@@ -1,27 +1,31 @@
 <template>
-  <div>
-    <!-- 报错 -->
-    <Student name='王五' sex='人妖' :age='age' />
-    {{ age }}
-    <!-- 加冒号就是传整数不会报错 -->
-    <Student name='张三' sex='男' :age='18' />
-
-    <hr>
-    
-    <!-- v-bind会对表达式进行计算 -->
-    <Student name='李四' sex='女' :age='18+1' />
-  </div>
+	<div class="container">
+		<Category title="游戏" >
+			<!-- <School slot="a"></School> -->
+			<School></School>
+		</Category>
+	</div>
 </template>
 
 <script>
-  import Student from './components/Student.vue'
-  export default {
-    name:'App',
-    components:{Student},
-    data() {
-      return {
-        age:18
-      }
-    },
-  }
+	import Category from './components/Category'
+	import School from './components/School.vue'
+	export default {
+		name:'App',
+		components:{Category,School},
+		data() {
+			return {
+				foods:['火锅','烧烤','小龙虾','牛排'],
+				games:['红色警戒','穿越火线','劲舞团','超级玛丽'],
+				films:['《教父》','《拆弹专家》','《你好，李焕英》','《尚硅谷》']
+			}
+		},
+	}
 </script>
+
+<style scoped>
+	.container{
+		display: flex;
+		justify-content: space-around;
+	}
+</style>
