@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const task = [
+            () => new Promise((resolve) => setTimeout(() => { console.log(1); resolve(1); }, 100)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(2); resolve(2); }, 50)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(3); resolve(3); }, 200)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(4); resolve(4); }, 150)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(5); resolve(5); }, 300)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(6); resolve(6); }, 180)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(7); resolve(7); }, 170)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(8); resolve(8); }, 500)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(9); resolve(9); }, 600)),
+            () => new Promise((resolve) => setTimeout(() => { console.log(10); resolve(10); }, 400)),
+        ];
+
+        function promiselimit(num) {
+            let running = 0;
+            let queue = []
+
+            return function (task) {
+                queue.push(task)
+                run()
+            }
+
+            function run() {
+                if (running >= num) return
+                let t = queue.shift()
+                if (t) {
+                    running++
+                    t().then(res => console.log('task ' + res))
+                        .catch(err => console.log(err))
+                        .finally(() => {
+                            running--
+                            run()
+                        })
+                }
+            }
+        }
+        let deal = promiselimit(3)
+        task.forEach((t) => deal(t));
+    </script>
+</body>
+
+</html>
