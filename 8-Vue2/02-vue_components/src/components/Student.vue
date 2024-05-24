@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
   export default {
     name:'School',
     data() {
@@ -14,12 +13,6 @@
             name:'中科大',
             address:'苏高院'
         }
-    },
-    beforeCreate() {
-      console.log('11');
-    },
-    created() {
-      console.log('22');
     },
     }
 </script>

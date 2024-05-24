@@ -1,31 +1,28 @@
 <template>
-	<div class="container">
-		<Category title="游戏" >
-			<!-- <School slot="a"></School> -->
-			<School></School>
-		</Category>
-	</div>
+  <div>
+    <h1 v-text="msg" ref="title"></h1>
+    <button @click="showDOM" ref="btn">点我输出上面的DOM元素</button>
+    <School ref='sch' id='sch' />
+  </div>
 </template>
 
 <script>
-	import Category from './components/Category'
-	import School from './components/School.vue'
-	export default {
-		name:'App',
-		components:{Category,School},
-		data() {
-			return {
-				foods:['火锅','烧烤','小龙虾','牛排'],
-				games:['红色警戒','穿越火线','劲舞团','超级玛丽'],
-				films:['《教父》','《拆弹专家》','《你好，李焕英》','《尚硅谷》']
-			}
-		},
-	}
+  import School from './components/Student.vue'
+  export default {
+    name:'App',
+    data() {
+      return {
+        msg:'欢迎学习前端'
+      }
+    },
+    components:{School},
+    methods: {
+      showDOM(){
+        // console.log(this.$refs.title);
+        // 注意下面两种获取元素的区别
+        console.log(this.$refs['sch']);
+        console.log(document.querySelector('#sch'));
+      }
+    },
+  }
 </script>
-
-<style scoped>
-	.container{
-		display: flex;
-		justify-content: space-around;
-	}
-</style>
