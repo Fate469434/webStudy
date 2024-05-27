@@ -39,5 +39,5 @@ defineExpose({
 </script>
 
 <style>
-
+@import './style.css';
 </style>

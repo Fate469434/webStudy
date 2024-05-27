@@ -31,9 +31,11 @@ export const buttonProps = {
         type: Boolean
     }
 }
+
 export interface ButtonInstance {
     ref: HTMLButtonElement
 }
+
 // export interface ButtonProps {
 //     type?: ButtonType;
 //     size?: ButtonSize;
