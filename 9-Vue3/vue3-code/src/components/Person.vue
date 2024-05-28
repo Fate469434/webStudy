@@ -1,25 +1,23 @@
 <template>
   <div class="person">
     <ul>
-      <!-- <li v-for="p in list" :key="p.id">
+      <li v-for="p in list" :key="p.id">
         {{p.name}} -- {{p.age}}
-      </li> -->
-      <li>{{ `vk-${name}` }}</li>
-      <li>{{ console.log(Boolean(name))}}</li>
+      </li>
+      {{ console.log(list)}}
     </ul>
   </div>
 </template>
 
 <script lang="ts" setup name="Person">
-  import {onMounted, withDefaults} from 'vue'
+  import {withDefaults} from 'vue'
   import {type Persons} from '@/types'
-  defineProps({
-    name:{
-      type:Boolean
-    }
-  })
+
   // 只接收list
-  // defineProps(['list'])
+  let props=defineProps(['list','name'])
+  console.log(props);
+  // console.log();
+  
 
   // 接收list + 限制类型
   // defineProps<{list:Persons}>()
@@ -28,6 +26,7 @@
   // withDefaults(defineProps<{list?:Persons}>(),{
   //   list:()=> [{id:'ausydgyu01',name:'康师傅·王麻子·特仑苏',age:19}]
   // })
+
 
   // 接收list，同时将props保存起来
   /* let x = defineProps(['list'])

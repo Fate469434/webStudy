@@ -25,11 +25,14 @@ if (props.accordion && activeNames.value.length > 1) {
 }
 
 const handleItemClick = (item: NameType) => {
+  console.log(props);
+  
   let _activeNames = [...activeNames.value]
-  if (props.accordion) {
-    _activeNames = [activeNames.value[0] === item ? '' : item]
+  if (props.accordion) { //如果手风琴效果打开
+    _activeNames = activeNames.value[0] === item ? [] : [item]
     activeNames.value = _activeNames
-  } else {
+  }
+  else {
     const index = _activeNames.indexOf(item)
     if (index > -1) {
       // 存在，删除数组对应的一项

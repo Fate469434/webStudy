@@ -2,7 +2,7 @@
   <!-- 务必看懂下面这一行代码 -->
   <!-- <h2 a="1+1" :b="1+1" c="x" :d="x" ref="qwe">测试</h2> -->
   
-  <Person a="哈哈"/>
+  <Person a="哈哈" list/>
 </template>
 
 <script lang="ts" setup name="App">
@@ -17,5 +17,7 @@
     {id:'asudfysafd02',name:'李四',age:20},
     {id:'asudfysaf)d03',name:'王五',age:22}
   ])
-
+  setTimeout(()=>{
+    personList.push({id:'asudfysaf)d03',name:'王五',age:23})
+  },5000)
 </script>

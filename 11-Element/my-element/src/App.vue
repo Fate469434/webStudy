@@ -19,7 +19,7 @@
   <Button size="large" loading>Loading</Button>
   <Button size="large" icon="arrow-up">Icon</Button><br /><br />
 
-  <Collapse v-model="openedValue">
+  <Collapse v-model="openedItemNames">
     <Item name="a" title="Title A">
       <h1>headline title</h1>
       <div> this is content a aaa </div>
@@ -31,7 +31,7 @@
       <div> this is cccc test </div>
     </Item>
   </Collapse>
-  {{openedValue}}
+  {{ openedItemNames }}
 </template>
 
 <script setup lang="ts">
@@ -46,7 +46,7 @@ onMounted(() => {
     console.log(buttonRef.value.ref);
   }
 })
-const openedValue = ref(['a'])
+const openedItemNames = ref(['a'])
 </script>
 
 
