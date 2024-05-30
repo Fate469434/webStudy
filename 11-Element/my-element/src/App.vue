@@ -19,7 +19,7 @@
   <Button size="large" loading>Loading</Button>
   <Button size="large" icon="arrow-up">Icon</Button><br /><br />
 
-  <Collapse v-model="openedItemNames">
+  <Collapse accordion >
     <Item name="a" title="Title A">
       <h1>headline title</h1>
       <div> this is content a aaa </div>

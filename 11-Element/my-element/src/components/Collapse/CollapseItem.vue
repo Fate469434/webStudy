@@ -41,6 +41,7 @@ const transitionEvents: Record<string, (el: HTMLElement) => void> = {
     el.style.overflow = 'hidden'
   },
   enter(el) {
+    console.dir(el);
     el.style.height = `${el.scrollHeight}px`
   },
   afterEnter(el) {
@@ -58,6 +59,9 @@ const transitionEvents: Record<string, (el: HTMLElement) => void> = {
     el.style.height = ''
     el.style.overflow = ''
   }
-
 }
 </script>
+
+<style>
+@import './style.css';
+</style>

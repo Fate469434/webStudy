@@ -53,10 +53,10 @@ const store = myStore()
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .fade-enter-active {
-    transition-delay: 0.3s;
+    transition-delay: 0.2s;
 }
 </style>

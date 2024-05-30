@@ -2,6 +2,7 @@
   <div class="vk-collapse">
     <slot></slot>
   </div>
+  {{ console.log(props) }}
 </template>
 
 <script setup lang="ts">
@@ -12,7 +13,10 @@ import { collapseContextKey } from './types'
 defineOptions({
   name: 'VkCollapse'
 })
-const props = defineProps<CollapseProps>()
+const props = withDefaults(defineProps<CollapseProps>(),{
+  modelValue:()=>[],
+  accordion:false
+})
 const emits = defineEmits<CollapseEmits>()
 const activeNames = ref<NameType[]>(props.modelValue)
 
@@ -54,5 +58,18 @@ provide(collapseContextKey, {
 </script>
 
 <style>
-/* @import './style.css'; */
+.vk-collapse {
+  --vk-collapse-border-color: var(--vk-border-color-light);
+  --vk-collapse-header-height: 48px;
+  --vk-collapse-header-bg-color: var(--vk-fill-color-blank);
+  --vk-collapse-header-text-color: var(--vk-text-color-primary);
+  --vk-collapse-header-font-size: 13px;
+  --vk-collapse-content-bg-color: var(--vk-fill-color-blank);
+  --vk-collapse-content-font-size: 13px;
+  --vk-collapse-content-text-color: var(--vk-text-color-primary);
+  --vk-collapse-disabled-text-color: var(--vk-disabled-text-color);
+  --vk-collapse-disabled-border-color: var(--vk-border-color-lighter);
+  border-top: 1px solid var(--vk-collapse-border-color);
+  border-bottom: 1px solid var(--vk-collapse-border-color);
+}
 </style>
